@@ -1,6 +1,8 @@
 
 
 variable "vpc_config" {
+  description = "Configuration for the VPC. Requires a valid CIDR block and a name."
+
   type = object({
     cidr_block = string
     name       = string
@@ -13,6 +15,8 @@ variable "vpc_config" {
 }
 
 variable "subnet_config" {
+  description = "Map of subnet definitions. Each key becomes the subnet Name tag and output key. Set public = true to route through the Internet Gateway."
+
   type = map(object({
     cidr_block = string
     public     = optional(bool, false)
